@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dpg9 Blog App</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Project for CS312 - By Dylan Griffith (Dpg9)</h1>
+    <form action="/create" method="POST">
+      <input type="text" name="title" placeholder="Blog Title" required />
+      <input type="text" name="author" placeholder="Author" required />
+      <textarea
+        name="content"
+        placeholder="Write your blog..."
+        required
+      ></textarea>
+      <button type="submit">Create Post</button>
+    </form>
+
+    <h2>All Posts</h2>
+    <ul>
+      <% posts.forEach(post => { %>
+      <li>
+        <h3><%= post.title %></h3>
+        <p><%= post.content %></p>
+        <small>By <%= post.author %> on <%= post.date %></small>
+        <a href="/edit/<%= post.id %>">Edit</a>
+        <a href="/delete/<%= post.id %>">Delete</a>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

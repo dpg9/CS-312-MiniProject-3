@@ -1,0 +1,28 @@
+<!-- blogs.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Feed</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Welcome, <%= username %> !!! All Blog Posts</h1>
+
+    <!-- Loop through each blog post and display it -->
+    <ul>
+      <% blogs.forEach(function(blog) { %>
+      <li>
+        <h2><%= blog.title %></h2>
+        <p><%= blog.body %></p>
+        <p>Posted by <%= blog.creator_name %> on <%= blog.date_created %></p>
+        <a href="/edit-post/<%= blog.blog_id %>">Edit</a> |
+        <a href="/delete-post/<%= blog.blog_id %>">Delete</a>
+      </li>
+      <% }); %>
+    </ul>
+
+    <a href="/create-post">Create a New Post</a>
+  </body>
+</html>
